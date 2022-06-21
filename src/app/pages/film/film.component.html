@@ -1,0 +1,68 @@
+<h3>Film Form</h3>
+
+<a class="btn btn-primary" routerLink="/">Back to film list</a>
+<a class="btn btn-primary" routerLink="/favourite-films">Favourite</a>
+
+<form [formGroup]="filmForm" *ngIf="filmForm">
+  <div
+    class="m-3 p-3 col-md-12 col-lg-8"
+  >
+
+    <div class="mb-3 d-flex flex-column">
+     <h2>{{film?.title}} <span class="span1"> (<i class="fa fa-star" aria-hidden="true"></i>{{average}}) </span> </h2>
+    </div>
+
+    <div class="mb-3 d-flex flex-column">
+      <span class="badge bg-primary">Description</span>
+      <input
+        type="text" readonly
+        class="form-control-plaintext"
+        formControlName="description"
+      />
+    </div>
+
+    <div class="mb-3 d-flex flex-column" >
+      <span class="badge bg-primary">Actors</span>
+      <div *ngFor="let actor of film?.actors">
+      <p>{{actor.name}}  ... {{actor.role}}</p>
+    </div>
+    </div>
+
+    <div class="mb-3 d-flex flex-column">
+      <span class="badge bg-primary">Marks</span>
+      <div class="row">
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3" *ngFor="let comment of film?.comments">
+
+         <p class="mb-0" >{{comment?.mark}}</p>
+
+      </div>
+      </div>
+
+      <!-- <input
+      type="text" readonly
+      class="form-control-plaintext"
+      formControlName="marks"
+    /> -->
+
+    </div>
+
+    <div class="mb-3 d-flex flex-column">
+      <div class="row">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3" *ngFor="let img of film?.images">
+
+       <img class="img-fluid img-thumbnail" src="{{img}}">
+
+    </div>
+    </div>
+  </div>
+  <br>
+  <a class="btn btn-primary" routerLink="add-mark">Add comment</a> &nbsp;
+  <a class="btn btn-primary" routerLink="comment-list">Comment list</a>
+
+  <br>
+  <router-outlet ></router-outlet>
+  </div>
+
+</form>
+
+

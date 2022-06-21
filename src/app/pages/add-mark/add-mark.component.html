@@ -1,0 +1,69 @@
+<form (ngSubmit)="onSave()" *ngIf="commentForm" [formGroup]="commentForm">
+
+  <div class="m-3 p-3 col-md-12 col-lg-6">
+    <div class="mb-3 d-flex flex-column">
+      <label class="form-label">Username*</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="showControlError('username')"
+      >
+        <span *ngIf="controlHasError('username','required')"
+          >Username is required</span>
+      </div>
+    </div>
+
+    <div class="mb-3 d-flex flex-column">
+      <label class="form-label">Mark*</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="mark"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="showControlError('mark')"
+      >
+        <span *ngIf="controlHasError('mark','required')" >
+          Mark is required
+        </span>
+        <span *ngIf="controlHasError('mark','min')"
+          >Mark must be more then {{commentForm.get('mark')?.errors!['min']['min']}}
+        </span>
+        <span *ngIf="controlHasError('mark','max')"
+          >Mark must be less then {{commentForm.get('mark')?.errors!['max']['max']}}
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-3 d-flex flex-column">
+      <label class="form-label">Comment</label>
+      <textarea
+        type="text"
+        class="form-control"
+        formControlName="comment"
+      ></textarea>
+      <div
+        class="alert alert-danger"
+        *ngIf="showControlError('comment')"
+      >
+        <span *ngIf="controlHasError('comment','maxlength')">
+          Comment must be less then 50 chars.
+        </span>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-around">
+      <!-- <button type="button" class="btn btn-danger" routerLink="../comment-list" >Cancel</button> -->
+      <button  type="submit" class="btn btn-secondary">Save</button>
+    </div>
+
+  </div>
+
+
+</form>

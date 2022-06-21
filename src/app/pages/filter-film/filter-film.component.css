@@ -1,0 +1,12 @@
+.filter-container{
+  width: 30%;
+  margin: 20px;
+  position: relative;
+}
+
+.filter-container i{
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  color: gray;
+}

@@ -1,0 +1,11 @@
+<div class="comment-list">
+
+  <div
+    class="comment-card m-2 col-lg-5 col-sm-12 border border-primary p-2 rounded-3"
+    *ngFor="let comment of comments">
+    <h4>Username: {{ comment.username }}</h4>
+    <p>Mark: {{comment.mark}}</p>
+  <span>Comment: {{comment.comment}}</span>
+  </div>
+
+</div>
